@@ -16,7 +16,7 @@ export default function Home() {
 
   const fetchDirectories = async () => {
     try {
-      const response = await fetch('/api/builddir');
+      const response = await fetch('CRApproval/api/builddir');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

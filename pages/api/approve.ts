@@ -4,7 +4,7 @@ import axios from 'axios';
 import { io } from 'socket.io-client';
 import { readdirSync } from 'fs';
 
-const socket = io('http://localhost:3000');
+const socket = io('http://localhost:8087');
 // const socket = io('http://10.230.150.218:3000')
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { dirName } = req.query;

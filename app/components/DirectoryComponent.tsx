@@ -9,11 +9,11 @@ interface DirectoryComponentProps {
 
 const DirectoryComponent: React.FC<DirectoryComponentProps> = ({ dirName }) => {
     // const imagePath = `/${dirName}/image.png`;
-    const original = `/${dirName}/${dirName}_original.png`;
-    const adjusted = `/${dirName}/${dirName}_adjusted.png`;
+    const original = `/CRApproval/${dirName}/${dirName}_original.png`;
+    const adjusted = `/CRApproval/${dirName}/${dirName}_adjusted.png`;
     const handleDownload = () => {
         const link = document.createElement('a');
-        link.href = `/api/download?dirName=${dirName}`;
+        link.href = `CRApproval/api/download?dirName=${dirName}`;
         link.download = `${dirName}.zip`;
         document.body.appendChild(link);
         link.click();
@@ -21,7 +21,7 @@ const DirectoryComponent: React.FC<DirectoryComponentProps> = ({ dirName }) => {
       };
       const handleApprove = async () => {
         try {
-            const response = await fetch(`/api/approve?dirName=${dirName}`, {
+            const response = await fetch(`CRApproval/api/approve?dirName=${dirName}`, {
               method: 'GET',
             });
             const data = await response.json();
