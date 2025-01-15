@@ -21,6 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const directories = directories1.filter((dir) => dir.includes('complete')===false);
     console.log("IN APPROVED " + directories)
     socket.emit('variableFromApprove', directories);
+    socket.emit('logging', `${dirName} has been approved`);
     const data = {
       "status": "approved",
       "isbn": dirName
@@ -36,13 +37,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     };
     const response = await axios.request(config);
     console.log(JSON.stringify(response.data));
-    // axios.request(config)
-    //   .then((response) => {
-    //     console.log(JSON.stringify(response.data));
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
       
     }else{
       const directories1 = readdirSync('public', { withFileTypes: true }).filter((dirent) => dirent.isDirectory()).map((dirent) => dirent.name);

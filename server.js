@@ -11,7 +11,13 @@ const handler = app.getRequestHandler();
 app.prepare().then(() => {
   const httpServer = createServer(handler);
 
-  const io = new Server(httpServer);
+  // const io = new Server(httpServer);
+  const io = new Server(httpServer, {
+    cors: {
+      origin: "*", // Allow all origins
+      methods: ["GET", "POST"],
+    },
+  });
 
   io.on("connection", (socket) => {
     // ...
@@ -25,6 +31,10 @@ app.prepare().then(() => {
         console.log(data);
         io.emit('directories', data)
       })
+    socket.on("logging", (data) => {
+      console.log("Server Logging Data " + data);
+      io.emit("clientlogging", data)
+    })
   });
   
   httpServer
