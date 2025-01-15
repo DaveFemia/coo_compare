@@ -31,6 +31,10 @@ app.prepare().then(() => {
         console.log(data);
         io.emit('directories', data)
       })
+    socket.on("variableFromReject", (data) => {
+      console.log(data);
+      io.emit('directories', data)
+    })
     socket.on("logging", (data) => {
       console.log("Server Logging Data " + data);
       io.emit("clientlogging", data)

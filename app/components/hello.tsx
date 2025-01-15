@@ -5,7 +5,7 @@ function Hello() {
     const [log, setLog] = useState<string[]>([]);
     console.log("Hello, I'm a component");
     const socket = io('http://prepresscontrolcenter.lsccom.com:8087');
-    // const socket = io('http://192.168.50.244:8087');
+    // const socket = io('http://localhost:8087');
     useEffect(() => {
         socket.on("clientlogging", (data) => {
             const d = new Date();
@@ -24,13 +24,13 @@ function Hello() {
         };
       }, []);
     return (
-        <div>
+        <div className="relative mx-auto border-2 grid grid-cols-2 p-2">
             <div>
             <h1>Instructions:</h1>
             <p>&nbsp; 1. Compare the Original image and the Adjusted image.</p>
             <p>&nbsp; 2. If both images look the same you can hit the Approve button, otherwise hit reject</p></div>
             <div>
-                <h1>Approvals</h1>
+                <h1>Log:</h1>
                 <textarea
                     value={log.join('\n')}
                     readOnly

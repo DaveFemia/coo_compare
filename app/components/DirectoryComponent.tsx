@@ -33,6 +33,20 @@ const DirectoryComponent: React.FC<DirectoryComponentProps> = ({ dirName }) => {
             console.error('Error approving directory:', error);
           }
       };
+      const handleReject = async () => {
+        try {
+            const response = await fetch(`CRApproval/api/reject?dirName=${dirName}`, {
+              method: 'GET',
+            });
+            const data = await response.json();
+            console.log(data);
+            if (response.ok) {
+            //   window.location.reload();
+            }
+          } catch (error) {
+            console.error('Error approving directory:', error);
+          }
+      };
   return (
     <div className="container mx-auto border-2 rounded-md p-3">
         <h2>Job: {dirName}</h2>
@@ -64,7 +78,7 @@ const DirectoryComponent: React.FC<DirectoryComponentProps> = ({ dirName }) => {
         </div>
         <div className="flex justify-center m-4">
             <button className="bg-green-300 text-white px-4 py-2 rounded m-2" onClick={handleApprove}>Approve</button>
-            <button className="bg-red-300 text-white px-4 py-2 rounded m-2">Reject</button>
+            <button className="bg-red-300 text-white px-4 py-2 rounded m-2" onClick={handleReject}>Reject</button>
             <button className="bg-gray-300 text-white px-4 py-2 rounded m-2" onClick={handleDownload}>Download</button>
         </div>
     </div>
