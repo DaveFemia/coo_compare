@@ -1,6 +1,6 @@
 // FILE: app/components/DirectoryComponent.tsx
 "use client";
-import React from 'react';
+import React, {useState} from 'react';
 import Image from 'next/image';
 
 interface DirectoryComponentProps {
@@ -11,6 +11,10 @@ const DirectoryComponent: React.FC<DirectoryComponentProps> = ({ dirName }) => {
     // const imagePath = `/${dirName}/image.png`;
     const original = `/CRApproval/${dirName}/${dirName}_original.png`;
     const adjusted = `/CRApproval/${dirName}/${dirName}_adjusted.png`;
+    const adjustedhighlight = `/CRApproval/${dirName}/${dirName}_adjusted_highlight.png`;
+
+    const [highlight, setHighlight] = useState(false);
+
     const handleDownload = () => {
         const link = document.createElement('a');
         link.href = `CRApproval/api/download?dirName=${dirName}`;
@@ -67,7 +71,7 @@ const DirectoryComponent: React.FC<DirectoryComponentProps> = ({ dirName }) => {
                 <h4>Adjusted:</h4>
                 <Image
                 className="mx-2"
-                src={adjusted}
+                src={highlight ? adjustedhighlight : adjusted}
                 style={{ objectFit: 'contain'}}
                 width={500}
                 height={0}
@@ -80,6 +84,15 @@ const DirectoryComponent: React.FC<DirectoryComponentProps> = ({ dirName }) => {
             <button className="bg-green-300 text-white px-4 py-2 rounded m-2" onClick={handleApprove}>Approve</button>
             <button className="bg-red-300 text-white px-4 py-2 rounded m-2" onClick={handleReject}>Reject</button>
             <button className="bg-gray-300 text-white px-4 py-2 rounded m-2" onClick={handleDownload}>Download</button>
+            <label className="flex items-center">
+          <input
+            type="checkbox"
+            className="mr-2"
+            checked={highlight}
+            onChange={() => setHighlight(!highlight)}
+          />
+          Highlight Print Code
+        </label>
         </div>
     </div>
   );
