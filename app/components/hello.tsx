@@ -24,7 +24,7 @@ function Hello() {
         };
       }, []);
     return (
-        <div className="relative mx-auto border-2 grid grid-cols-2 p-2">
+        <div className="relative mx-auto border-2 grid grid-cols-2 p-2 mb-4 rounded-xl">
             <div>
             <h1>Instructions:</h1>
             <p>&nbsp; 1. Compare the Original image and the Adjusted image.</p>

@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import Hello from '@/app/components/hello';
+import Navbars from '@/app/components/navbar';
 import DirectoryComponent from '@/app/components/DirectoryComponent';
 import AccordionItem from '@/app/components/AccordionItem';
 
@@ -70,7 +71,9 @@ export default function Home() {
 
   return (
     <>
+    <Navbars />
       <div className="container mx-auto px-4 text-black">
+        
         <h1 className="text-3xl">CR reupload approval:</h1>
         {/* <p>Status: {isConnected ? "connected" : "disconnected"}</p>
         <p>Transport: {transport}</p> */}
