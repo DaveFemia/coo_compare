@@ -10,7 +10,7 @@ function Navbars() {
 return (
     <div className="bg-green-600 p-1 sticky top-0 z-50 mb-2">
         <div className="pl-5 ml-5 w-full">
-            <div as="list-none" className="">
+            <div className="list-none">
                 <NextLink className="" href="http://prepresscontrolcenter.lsccom.com/">
                     <Logo className=""/>
                 </NextLink>
