@@ -66,7 +66,7 @@ export default function Home() {
   }, []); // Empty dependency array ensures this runs only once
 
   const directories = directories1.filter((dir) => !dir.includes('complete'));
-  console.log(directories + isConnected + transport);
+  console.log(`${directories}  ${isConnected}  ${transport}`);
 
   return (
     <>
